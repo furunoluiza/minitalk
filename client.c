@@ -34,7 +34,10 @@ void send_str(int pid, char *str)
     int i;
     i = 0;
     while (str[i] != '\0')
+    {
         send_bit(pid, str[i]);
+        i++;
+    }
 }
 
 int main(int argc, char *argv[])

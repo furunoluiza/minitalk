@@ -36,6 +36,7 @@ void	bit_char(int sig)
 int	main(void)
 {
 	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	while (1)
 	{
 		signal(SIGUSR1, bit_char);
