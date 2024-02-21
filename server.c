@@ -17,8 +17,20 @@
 
 void	bit_char(int sig)
 {
-	(void)sig;
-	write (1, "PALMEIRAS\n", 10);
+	static char	c = 0;
+	static int	bit = 0;
+
+	if (sig == SIGUSR2)
+		c = c << 1;
+	else
+		c = c << 1 | 1;
+	bit++;
+	if (bit == 8)
+	{
+		write(1, &c, 1);
+		c = 0;
+		bit = 0;
+	}
 }
 
 int	main(void)

@@ -1,25 +1,29 @@
-SRC = server.c client.c
-LIBFT = libft.a
 NAME = minitalk
-OBJ = $(SRC:.c=.o)
-CC = cc
-RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
+SRC_C = client.c
+SRC_S = server.c
+NAMELIB = libft.a
+LIBFT = libft/libft.a
+NAME_C = client
+NAME_S = server
 
-$(NAME): $(OBJ)
-	@make -C libft
-	@$(CC) $(CFLAGS) $(OBJ) libft/$(LIBFT) -o server
+$(NAME_S) : $(NAMELIB)
+	gcc -Wall -Werror -Wextra server.c -I include $(NAMELIB) -o $(NAME_S)
 
-all: $(NAME)
+$(NAME_C) : $(NAMELIB)
+	gcc -Wall -Werror -Wextra client.c -I include $(NAMELIB) -o $(NAME_C)
+
+$(NAMELIB) :
+	$(MAKE) -C libft/.
+	cp $(LIBFT) ./
+
+all: $(NAME_C) $(NAME_S) $(LIBFT)
 
 clean:
-	@$(RM) $(OBJ)
+	@$(MAKE) fclean -C ./libft
 
 fclean: clean
-	@$(RM) $(NAME)
+	rm -rf $(NAME_S)
+	rm -rf $(NAME_C)
+	rm -rf $(NAMELIB)
 
 re: fclean all
-
-
-
-.PHONY: all clean fclean re
