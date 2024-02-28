@@ -6,7 +6,7 @@
 /*   By: lfuruno- <lfuruno-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:06:07 by lfuruno-          #+#    #+#             */
-/*   Updated: 2024/02/27 11:00:27 by lfuruno-         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:55:16 by lfuruno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	bit_char(int sig)
 {
-	static char	c;
-	static int	bit;
+	static char	c = 0;
+	static int	bit = 0;
 
-	c = 0;
-	bit = 0;
 	if (sig == SIGUSR2)
 		c = c << 1;
 	else
