@@ -6,10 +6,10 @@ The objective of this project is to establish a client-server framework for data
 
 ## How to Use
 
-1. Install
+1. Install and enter in the directory
 
 ```sh
-git clone git@github.com:furunoluiza/minitalk.git
+git clone git@github.com:furunoluiza/minitalk.git && cd minitalk
 ```
 
 2. Compilation
